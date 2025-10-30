@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Clock } from "lucide-react";
 
 interface CountdownTimerProps {
@@ -7,10 +7,12 @@ interface CountdownTimerProps {
 }
 
 export const CountdownTimer = ({ endTime, urgent = false }: CountdownTimerProps) => {
+  // Store the target end time once and don't recalculate it
+  const targetEndTime = useRef(endTime ? endTime.getTime() : new Date().getTime() + (24 * 60 * 60 * 1000));
+  
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
-    const end = endTime ? endTime.getTime() : now + (24 * 60 * 60 * 1000); // Default to 24 hours
-    const difference = end - now;
+    const difference = targetEndTime.current - now;
 
     if (difference <= 0) {
       return { hours: 0, minutes: 0, seconds: 0 };
