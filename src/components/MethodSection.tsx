@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { openClauddeWidget } from "@/lib/claudde";
 import methodIllustration from "@/assets/method-illustration.jpg";
 
 export const MethodSection = () => {
@@ -78,7 +79,10 @@ export const MethodSection = () => {
           <Button 
             size="lg" 
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8"
-            onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+              openClauddeWidget();
+            }}
           >
             See Your Best-Fit Plan
           </Button>
