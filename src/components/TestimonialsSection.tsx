@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { openClauddeWidget } from "@/lib/claudde";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Quote } from "lucide-react";
 import testimonialAvatar1 from "@/assets/testimonial-avatar-1.jpg";
@@ -66,7 +67,10 @@ export const TestimonialsSection = () => {
           <Button 
             size="lg" 
             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_40px_rgba(168,85,247,0.6)] hover:scale-105 transition-all"
-            onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+              openClauddeWidget();
+            }}
           >
             Book Now — Limited Spots This Week
           </Button>
